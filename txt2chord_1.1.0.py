@@ -348,9 +348,9 @@ def GenerateChord():
         
     for value in cmyk:
         try:
-            interval=int(value/14.28)+3
+            interval=int(value/16.66)+3
         except:
-            interval=2
+            interval=3
         notevalue=notevalue+interval
         if notevalue>11:
             notevalue=notevalue-11
@@ -494,9 +494,9 @@ def GenerateChord():
         
     for value in cmyk:
         try:
-            interval=int(value/14.28)+3
+            interval=int(value/16.66)+3
         except:
-            interval=2
+            interval=3
         notevalue=notevalue+interval
         if notevalue>11:
             notevalue=notevalue-11
@@ -614,9 +614,9 @@ def GenerateChord():
         
     for value in cmyk:
         try:
-            interval=int(value/14.28)+3
+            interval=int(value/16.66)+3
         except:
-            interval=2
+            interval=3
         notevalue=notevalue+interval
         if notevalue>11:
             notevalue=notevalue-11
