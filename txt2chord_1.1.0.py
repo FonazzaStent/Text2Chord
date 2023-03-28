@@ -26,6 +26,10 @@ import pyperclip
 import math
 from tkinter import messagebox
 
+notes=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+rgb_scale = 255
+cmyk_scale = 100
+
 #init
 def init():
     global c
@@ -46,6 +50,7 @@ def init():
     global notes
     global rgb_scale
     global cmyk_scale
+    global notevalue
     c=9.84
     rc=28.44
     bc=23.27
@@ -61,9 +66,8 @@ def init():
     redlength=0
     greenlength=0
     bluelength=0
-    notes=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
-    rgb_scale = 255
-    cmyk_scale = 100
+    notevalue=0
+
 
 def rgb_to_cmyk(r,g,b):
     if (r == 0) and (g == 0) and (b == 0):
@@ -242,6 +246,7 @@ def GenerateChord():
     global greenlength
     global bluesum
     global bluelength
+    global notevalue
     numbersum=0
     text=textbox.get(1.0,END)
     textvalidate=0
@@ -342,24 +347,24 @@ def GenerateChord():
         rootvalue=rootvalue+1
         if rootvalue>11:
             rootvalue=0
-    root=notes[rootvalue]
+    root=notes[rootvalue-2]
     chord.append(root)
-    notevalue=rootvalue        
-        
+    notevalue=rootvalue-2        
+    
     for value in cmyk:
-        try:
-            interval=int(value/16.66)+3
-        except:
+        interval=int(value/16.66)+3
+        if value==0:
             interval=3
         notevalue=notevalue+interval
         if notevalue>11:
             notevalue=notevalue-11
+
         chord.append(notes[notevalue])
     chord_one.configure(state='normal')
     chord_one.delete(1.0,END)
     chord_one.insert(INSERT,chord)
     chord_one.configure(state='disabled')
-    notevalue=0
+    init()
 
 
 #algorithm 2
@@ -488,9 +493,9 @@ def GenerateChord():
         rootvalue=rootvalue+1
         if rootvalue>11:
             rootvalue=0
-    root=notes[rootvalue]
+    root=notes[rootvalue-2]
     chord.append(root)
-    notevalue=rootvalue        
+    notevalue=rootvalue-2       
         
     for value in cmyk:
         try:
@@ -505,7 +510,7 @@ def GenerateChord():
     chord_two.delete(1.0,END)
     chord_two.insert(INSERT,chord)
     chord_two.configure(state='disabled')
-    notevalue=0
+    init()
 
 #algorithm 3
 
@@ -608,9 +613,9 @@ def GenerateChord():
         rootvalue=rootvalue+1
         if rootvalue>11:
             rootvalue=0
-    root=notes[rootvalue]
+    root=notes[rootvalue-2]
     chord.append(root)
-    notevalue=rootvalue        
+    notevalue=rootvalue-2        
         
     for value in cmyk:
         try:
@@ -625,7 +630,7 @@ def GenerateChord():
     chord_three.delete(1.0,END)
     chord_three.insert(INSERT,chord)
     chord_three.configure(state='disabled')
-    notevalue=0
+    init()
 
 #Generate color hotkey
 def GenerateChord_hotkey(event):
