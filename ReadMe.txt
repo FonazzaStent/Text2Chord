@@ -1,8 +1,7 @@
 Text to Chord 1.1.0
 
-The program can convert words and sentences to 4 notes, to form a chord or inspire harmony and melody for
-music creation. Have fun turning into music your name, your friends' name, your city name, your favorite
-team name, your pet name.
+The program can convert words and sentences to 5 note chords, to inspire music creation. Have fun
+turning into music your name, your friends' name, your city name, your favorite team name, your pet name.
 Type or paste text into the text window. Click File-Generate Chord (or Alt-G) to generate the chords.
 The program will display on the right side of the textbox three chords of 5 notes generated from three
 different algorithms. The resulting notes can be used as a starting point to inspire harmony or melody
