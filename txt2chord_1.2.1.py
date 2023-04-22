@@ -916,6 +916,7 @@ def name_chord():
     dim=False
     aug=False
     add_fifth=False
+    minr_index=999
     for n in range (1,chord_length):
         step=chord_notes.index(chord[n])+1
         #print (step)
@@ -943,10 +944,16 @@ def name_chord():
             sus=True
             chordname.append(" Sus")
             sus_index=len(chordname)
-        if minr==True and step==7 and dim==False:
+        if minr==True and step==7 and dim==False and fifth==False:
             dim=True
             chordname.append(" Dim")
             dim_index=len(chordname)
+            if minr_index!=999:
+                chordname[minr_index-1]='delete'
+        if fifth==True and step==7:
+            sus_fourth_plus=True
+            chordname.append(" Sus4+")
+            sus_fourth_plus_index=len(chordname)
         if minr==False and step==7 and bfive==False:
             bfive=True
             chordname.append(" Add5b")
@@ -984,7 +991,7 @@ def name_chord():
             ninth_maj_index=len(chordname)
             if seventh_maj_index!=999:
                 chordname[seventh_maj_index-1]='delete'
-        if step==3 and sus==False and seventh_maj==False and seventh==False:
+        if step==3 and seventh_maj==False and seventh==False:
             add_ninth=True
             chordname.append(" Add9")
             ninth_maj_index=len(chordname)
@@ -994,7 +1001,7 @@ def name_chord():
             ninthb=True
             chordname.append(" Add9b")
             ninthb_index=len(chordname)
-        if ninth==True and sus==True and sixth==False:
+        if ninth==True and sus==True and sixth==False and(seventh==True or seventh_maj==True):
             eleventh=True
             chordname.append(" 11")
             eleventh_index=len(chordname)
@@ -1002,7 +1009,7 @@ def name_chord():
             chordname[ninth_index-1]='delete'
             chordname[sus_index-1]='delete'
 
-        if ninth==True and sus==True and sixth==True:
+        if ninth==True and sus==True and sixth==True and(seventh==True or seventh_maj==True):
             thirteenth=True
             chordname.append(" 13")
             thirteenth_index=len(chordname)
