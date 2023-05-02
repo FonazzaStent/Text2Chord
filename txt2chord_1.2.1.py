@@ -950,11 +950,7 @@ def name_chord():
             dim_index=len(chordname)
             if minr_index!=999:
                 chordname[minr_index-1]='delete'
-        if fifth==True and step==7:
-            sus_fourth_plus=True
-            chordname.append(" Sus4+")
-            sus_fourth_plus_index=len(chordname)
-        if minr==False and step==7 and bfive==False:
+        if fifth==True and step==7 and bfive==False:
             bfive=True
             chordname.append(" Add5b")
             bfive_index=len(chordname)
